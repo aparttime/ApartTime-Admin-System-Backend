@@ -17,14 +17,27 @@ public class NotificationService {
     private final NotificationAssemblerRegistry registry;
     private final SimpMessagingTemplate messagingTemplate;
 
-    public void send(
+    public void handlePayload(
+        Map<String, Object> payload
+    ) {
+        log.info("[NotificationService] handlePayload(): {}", payload);
+
+        // TODO: type이 null일 때의 예외처리
+        String typeString = (String) payload.get("type");
+
+        NotificationType type = NotificationType.valueOf(typeString);
+
+        send(type, payload);
+    }
+
+    private void send(
         NotificationType type,
         Map<String, Object> data
     ) {
         NotificationAssembler assembler = registry.getAssembler(type);
         NotificationMessage message = assembler.assemble(data);
 
-        log.info(">>> NotificationService send() message: {}", message);
+        log.info("[NotificationService] send(): {}", message);
 
         messagingTemplate.convertAndSend(
             type.getDestination(),

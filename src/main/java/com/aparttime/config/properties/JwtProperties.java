@@ -1,19 +1,26 @@
 package com.aparttime.config.properties;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
 
 @Getter
-@Setter
-@Configuration
 @ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
-    private String secret;
-    private long accessTokenExpiration;
-    private long refreshTokenExpiration;
-    private long secondaryTokenExpiration;
+    private final String secret;
+    private final long accessTokenExpiration;
+    private final long refreshTokenExpiration;
+    private final long secondaryTokenExpiration;
 
+    public JwtProperties(
+        String secret,
+        long accessTokenExpiration,
+        long refreshTokenExpiration,
+        long secondaryTokenExpiration
+    ) {
+        this.secret = secret;
+        this.accessTokenExpiration = accessTokenExpiration;
+        this.refreshTokenExpiration = refreshTokenExpiration;
+        this.secondaryTokenExpiration = secondaryTokenExpiration;
+    }
 }

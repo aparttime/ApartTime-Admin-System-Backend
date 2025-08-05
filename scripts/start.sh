@@ -25,6 +25,13 @@ export JWT_SECRET=$(aws ssm get-parameter --name "/aparttime/prod/jwt-secret" --
 export JWT_ACCESS_TOKEN_EXPIRATION=$(aws ssm get-parameter --name "/aparttime/prod/jwt-access-token-expiration" --with-decryption --query "Parameter.Value" --output text)
 export JWT_REFRESH_TOKEN_EXPIRATION=$(aws ssm get-parameter --name "/aparttime/prod/jwt-refresh-token-expiration" --with-decryption --query "Parameter.Value" --output text)
 export JWT_SECONDARY_TOKEN_EXPIRATION=$(aws ssm get-parameter --name "/aparttime/prod/jwt-secondary-token-expiration" --with-decryption --query "Parameter.Value" --output text)
+export RABBITMQ_HOST=$(aws ssm get-parameter --name "/aparttime/prod/rabbitmq/host" --with-decryption --query "Parameter.Value" --output text)
+export RABBITMQ_PORT=$(aws ssm get-parameter --name "/aparttime/prod/rabbitmq/port" --with-decryption --query "Parameter.Value" --output text)
+export RABBITMQ_USERNAME=$(aws ssm get-parameter --name "/aparttime/prod/rabbitmq/username" --with-decryption --query "Parameter.Value" --output text)
+export RABBITMQ_PASSWORD=$(aws ssm get-parameter --name "/aparttime/prod/rabbitmq/password" --with-decryption --query "Parameter.Value" --output text)
+export RABBITMQ_VIRTUAL_HOST=$(aws ssm get-parameter --name "/aparttime/prod/rabbitmq/virtual-host" --with-decryption --query "Parameter.Value" --output text)
+export RABBITMQ_EXCHANGE_NAME=$(aws ssm get-parameter --name "/aparttime/prod/rabbitmq/exchange-name" --with-decryption --query "Parameter.Value" --output text)
+export RABBITMQ_QUEUE_NAME=$(aws ssm get-parameter --name "/aparttime/prod/rabbitmq/queue-name" --with-decryption --query "Parameter.Value" --output text)
 
 
 # 기존에 실행 중인 앱이 있다면 종료

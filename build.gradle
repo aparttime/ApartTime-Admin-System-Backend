@@ -42,8 +42,8 @@ dependencies {
     // spring security
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
-    // kafka
-    implementation 'org.springframework.kafka:spring-kafka'
+    // rabbitmq
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
 
     // lombok
     compileOnly 'org.projectlombok:lombok'

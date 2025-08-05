@@ -12,16 +12,20 @@ spring:
       port: ${REDIS_PORT}
       timeout: 6000
 
-  kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
-    consumer:
-      group-id: ${KAFKA_GROUP_ID}
-      auto-offset-reset: latest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  rabbitmq:
+    host: ${RABBITMQ_HOST}
+    port: ${RABBITMQ_PORT}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST}
 
 jwt:
   secret: ${JWT_SECRET}
   access-token-expiration: ${JWT_ACCESS_TOKEN_EXPIRATION}
   refresh-token-expiration: ${JWT_REFRESH_TOKEN_EXPIRATION}
   secondary-token-expiration: ${JWT_SECONDARY_TOKEN_EXPIRATION}
+
+app:
+  rabbitmq:
+    exchange-name: ${RABBITMQ_EXCHANGE_NAME}
+    queue-name: ${RABBITMQ_QUEUE_NAME}
